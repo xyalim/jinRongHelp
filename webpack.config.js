@@ -31,18 +31,18 @@ module.exports = {
                 ]
             },
 
-            // {
-            //     test: /\.(jsx|js)$/,
-            //     use: {
-            //         loader: 'babel-loader',
-            //         options: {
-            //             presets: [
-            //                 "es2015",
-            //             ]
-            //         }
-            //     },
-            //     exclude: /node_modules/
-            // },
+            {
+                test: /\.(jsx|js)$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            "es2015",
+                        ]
+                    }
+                },
+                exclude: /node_modules/
+            },
 
             // {
             //     test: /.(ttf|woff2|woff|eot|svg)$/,
