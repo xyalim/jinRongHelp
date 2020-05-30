@@ -8,11 +8,6 @@ td {
     text-align: center;
 }
 
-.condition-table {
-    overflow-x: scroll;
-    overflow-y: visible;
-}
-
 .sel_table-title {
     font-size: 20px;
     text-align: center;
