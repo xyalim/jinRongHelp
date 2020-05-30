@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.bootcdn.net/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.6.3/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"> -->
+    <!-- fonticon -->
+    <link rel="stylesheet" href="./lib/bootstrap-pagination/bootstrap-pagination.min.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="./lib/bootstrap-pagination/bootstrap-pagination.min.js"></script>
+    <script src="./lib/Calendar.js"></script>
+
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/table.css">
+</head>
+
+<body>
+
+    <div class="col-md-12" role="main">
+
+        <!-- from to s -->
+        <div class="condition-table row">
+            <div class="col-md-6 col-md-offset-3 col-xs-12">
+                <div class="sel_table-title">Sales Quotation Report</div>
+                <table class="table-style-set table table-hover">
+                    <!-- <caption>边框表格布局</caption> -->
+                    <thead></thead>
+                    <tbody id="report-select">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- from to e -->
+
+        <!-- 表格功能栏s -->
+        <div class="row tool-group">
+            <div class="row col-md-4 col-md-offset-6 col-sm-12 col-xs-12">
+                <div class="search-group">
+                    <input id="search-report-info" class="form-control search-input" type="text" placeholder="Search">
+                </div>
+            </div>
+            <!-- search 框 s -->
+            <!-- <div class="search-group col-md-2 col-md-offset-6 col-sm-10 col-sm-offset-1">
+                <input id="search-report-info" class="form-control search-input" type="text" placeholder="Search">
+            </div> -->
+            <!-- search 框 e -->
+            <!-- 表格工具栏 s -->
+            <div class="row col-md-4 col-md-offset-6 col-sm-12 col-xs-12">
+                <div class="columns columns-right btn-group " style="float: right;">
+                    <!-- 数据刷新s -->
+                    <button id="refresh-btn" class="btn btn-secondary" type="button" name="refresh" aria-label="Refresh" title="Refresh">
+                        <i class="fa fa-sync"></i>
+                    </button>
+                    <!-- 数据刷新e -->
+
+                    <!-- 下拉选择框组 s -->
+                    <div id="myDropdown" class="keep-open btn-group" title="Columns">
+                        <!-- 下拉选择框开启按钮 -->
+                        <button id="dLabel" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-label="Columns" title="Columns" aria-expanded="false">
+                            <i class="fa fa-th-list"></i>
+                            <span class="caret"></span>
+                        </button>
+                        <!-- 下拉选择框 -->
+                        <ul id="select-menu" aria-labelledby="dLabel" class="dropdown-menu dropdown-menu-right">
+                            <!-- <label class="dropdown-item">
+                                <input type="checkbox" data-field="id" value="0" checked="checked">
+                                <span>ID</span>
+                            </label>
+                            <label class="dropdown-item"><input type="checkbox" data-field="name" value="1" checked="checked">
+                                <span>项目名称</span>
+                            </label>
+                            <label class="dropdown-item">
+                                <input type="checkbox" data-field="price" value="2" checked="checked">
+                                <span>项目价格</span>
+                            </label> -->
+
+                        </ul>
+                    </div>
+                    <!-- 下拉选择框组 e -->
+                    <!--  -->
+                    <div class="export btn-group">
+                        <button class="btn btn-secondary dropdown-toggle" aria-label="Export" data-toggle="dropdown" type="button" title="Export data">
+                        <i class="fa fa-download"></i>
+                        
+                        <span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item " href="#" data-type="json">JSON</a>
+                            <a class="dropdown-item " href="#" data-type="xml">XML</a>
+                            <a class="dropdown-item " href="#" data-type="csv">CSV</a>
+                            <a class="dropdown-item " href="#" data-type="txt">TXT</a>
+                            <a class="dropdown-item " href="#" data-type="sql">SQL</a>
+                            <a class="dropdown-item " href="#" data-type="excel">MS-Excel</a>
+                        </div>
+                    </div>
+                    <!--  -->
+                </div>
+            </div>
+            <!-- 表格工具栏 e -->
+        </div>
+        <!-- 表格功能栏e -->
+
+        <!-- 表格 demo s -->
+
+        <div class="report-table-container col-md-8 col-md-offset-2">
+
+            <table id="report-header" class="report-header-over table table-bordered">
+                <thead>
+                    <tr id="header-over">
+                    </tr>
+                </thead>
+            </table>
+
+            <div id="report-body-container">
+                <table id="report-body" class="report-table-style table table-bordered table-hover">
+                    <thead>
+                        <tr id="hid-header">
+                        </tr>
+                    </thead>
+                    <tbody id="data-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- 表格 demo e -->
+
+    <!-- 分页  s -->
+    <div class="row">
+        <div id="page-break" class="pagination col-md-12"></div>
+        <!-- 分页  e -->
+    </div>
+    </div>
+
+    <script src="./js/globalFn.js"></script>
+    <script src="./js/table.js"></script>
+    <script src="./js/select.js"></script>
+</body>
+
+</html>
